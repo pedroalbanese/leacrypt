@@ -10,6 +10,7 @@ The Lightweight Encryption Algorithm (also known as LEA) is a 128-bit block ciph
 LEA is one of the cryptographic algorithms approved by the Korean Cryptographic Module Validation Program (KCMVP) and is the national standard of Republic of Korea (KS X 3246). LEA is included in the ISO/IEC 29192-2:2019 standard (Information security - Lightweight cryptography - Part 2: Block ciphers).
 ### Command-line Lightweight Encryption Algorithm Utility
 <pre>Usage of leacrypt:
+leacrypt [-d] [-b N] -p "pass" [-i N] [-s "salt"] -f <file.ext>
   -b int
         Key length: 128, 192 or 256. (default 256)
   -d    Decrypt instead Encrypt.
