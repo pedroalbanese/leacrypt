@@ -33,9 +33,10 @@ func main() {
 	flag.Parse()
 
 	if len(os.Args) < 2 {
-		fmt.Println("LEA-GCM Encryption Tool - ALBANESE Lab (c) 2020-2021")
-		fmt.Println("Lightweight Encryption Algorithm in Galois/Counter Mode\n")
-		fmt.Println("Usage of", os.Args[0]+":")
+		fmt.Fprintln(os.Stderr, "LEA-GCM Encryption Tool - ALBANESE Lab (c) 2020-2021")
+		fmt.Fprintln(os.Stderr, "Lightweight Encryption Algorithm in Galois/Counter Mode\n")
+		fmt.Fprintln(os.Stderr, "Usage of "+os.Args[0]+":")
+		fmt.Fprintln(os.Stderr, os.Args[0]+" [-d] [-b N] -p \"pass\" [-i N] [-s \"salt\"] -f <file.ext>")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
