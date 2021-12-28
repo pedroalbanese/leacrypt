@@ -1,5 +1,6 @@
 # LEACrypt
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/pedroalbanese/leacrypt/blob/master/LICENSE.md) 
+[![GitHub downloads](https://img.shields.io/github/downloads/pedroalbanese/leacrypt/total.svg?logo=github&logoColor=white)](https://github.com/pedroalbanese/leacrypt/releases)
 [![GoDoc](https://godoc.org/github.com/pedroalbanese/leacrypt?status.png)](http://godoc.org/github.com/pedroalbanese/leacrypt)
 [![Go Report Card](https://goreportcard.com/badge/github.com/pedroalbanese/leacrypt)](https://goreportcard.com/report/github.com/pedroalbanese/leacrypt)
 [![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/pedroalbanese/leacrypt)](https://golang.org)
