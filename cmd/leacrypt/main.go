@@ -116,7 +116,7 @@ func main() {
 		msg := buf.Bytes()
 
 		c, _ := lea.NewCipher(key)
-		aead, _ := cipher.NewGCM(c)
+		aead, _ := cipher.NewGCMWithNonceSize(c, 16)
 
 		if *dec == false {
 			nonce := make([]byte, aead.NonceSize(), aead.NonceSize()+len(msg)+aead.Overhead())
