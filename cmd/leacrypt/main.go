@@ -20,6 +20,7 @@ import (
 var (
 	dec    = flag.Bool("d", false, "Decrypt instead Encrypt.")
 	file   = flag.String("f", "", "Target file. ('-' for STDIN)")
+	info   = flag.String("a", "", "Additional data.")
 	iter   = flag.Int("i", 1024, "Iterations. (for PBKDF2)")
 	key    = flag.String("k", "", "Symmetric key to Encrypt/Decrypt.")
 	length = flag.Int("b", 256, "Key length: 128, 192 or 256.")
@@ -116,12 +117,16 @@ func main() {
 		msg := buf.Bytes()
 
 		c, _ := lea.NewCipher(key)
-		aead, _ := cipher.NewGCMWithNonceSize(c, 16)
+		aead, _ := cipher.NewGCM(c)
 
 		if *dec == false {
 			nonce := make([]byte, aead.NonceSize(), aead.NonceSize()+len(msg)+aead.Overhead())
 
-			out := aead.Seal(nonce, nonce, msg, nil)
+			if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+				log.Fatal(err)
+			}
+
+			out := aead.Seal(nonce, nonce, msg, []byte(*info))
 			fmt.Printf("%s", out)
 
 			os.Exit(0)
@@ -130,7 +135,7 @@ func main() {
 		if *dec == true {
 			nonce, msg := msg[:aead.NonceSize()], msg[aead.NonceSize():]
 
-			out, err := aead.Open(nil, nonce, msg, nil)
+			out, err := aead.Open(nil, nonce, msg, []byte(*info))
 			if err != nil {
 				log.Fatal(err)
 			}
