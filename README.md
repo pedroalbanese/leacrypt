@@ -13,7 +13,7 @@ LEA is one of the cryptographic algorithms approved by the Korean Cryptographic 
 <pre>Usage of leacrypt:
 leacrypt [-d] [-b N] -p "pass" [-i N] [-s "salt"] -f &lt;file.ext&gt;
   -a string
-        Additional data.
+        Additional Authenticated Data.
   -b int
         Key length: 128, 192 or 256. (default 256)
   -d    Decrypt instead Encrypt.
